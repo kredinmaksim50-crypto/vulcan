@@ -5,9 +5,9 @@ layout(location = 0) out vec4 outColor;
 
 layout(push_constant) uniform PushConstants {
     float alphass;
-} a;
+} pc;
 
 void main()
 {
-    outColor = vec4(fragColor, a.alphass);
+    outColor = vec4(fragColor, pc.alphass);
 }

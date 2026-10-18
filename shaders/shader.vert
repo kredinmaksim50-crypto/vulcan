@@ -34,6 +34,16 @@ vec3 positions[36] = vec3[](
     vec3(-0.5, -0.5, -0.5), vec3( 0.5, -0.5,  0.5), vec3(-0.5, -0.5,  0.5)
 );
 
+vec3 floorPositions[6] = vec3[](
+    vec3(-5.0, -1.0, -5.0),
+    vec3( 5.0, -1.0,  5.0),
+    vec3( 5.0, -1.0, -5.0),
+
+    vec3(-5.0, -1.0, -5.0),
+    vec3(-5.0, -1.0,  5.0),
+    vec3( 5.0, -1.0,  5.0)
+);
+
 vec3 colors[6] = vec3[](
     vec3(1.0, 0.0, 0.0),
     vec3(0.0, 1.0, 0.0),
@@ -43,30 +53,42 @@ vec3 colors[6] = vec3[](
     vec3(0.0, 1.0, 1.0)
 );
 
+
+
+
 void main()
 {
-    vec3 pos = positions[gl_VertexIndex];
+    vec3 pos;
 
-    mat3 rotX = mat3(
-        1.0, 0.0, 0.0,
-        0.0, cos(pc.angleX), sin(pc.angleX),
-        0.0, -sin(pc.angleX), cos(pc.angleX)
-    );
+    if (gl_VertexIndex < 36)
+    {
+        // Куб: вращаем и смещаем
+        pos = positions[gl_VertexIndex];
 
-    mat3 rotY = mat3(
-        cos(pc.angleY), 0.0, -sin(pc.angleY),
-        0.0, 1.0, 0.0,
-        sin(pc.angleY), 0.0, cos(pc.angleY)
-    );
+        mat3 rotX = mat3(
+            1.0, 0.0, 0.0,
+            0.0, cos(pc.angleX), sin(pc.angleX),
+            0.0, -sin(pc.angleX), cos(pc.angleX)
+        );
 
-    vec3 rotatedPos = (rotY * rotX * pos) * 0.6;
+        mat3 rotY = mat3(
+            cos(pc.angleY), 0.0, -sin(pc.angleY),
+            0.0, 1.0, 0.0,
+            sin(pc.angleY), 0.0, cos(pc.angleY)
+        );
 
-    gl_Position = vec4(
-        rotatedPos.x,
-        rotatedPos.y,
-        rotatedPos.z + 0.5,
-        1.0
-    );
+        pos = (rotY * rotX * pos) * 0.6;
+        pos.z += 0.5;
 
-    fragColor = colors[gl_VertexIndex / 6];
+        fragColor = colors[gl_VertexIndex / 6];
+    }
+    else
+    {
+        // Пол: без вращения и смещения
+        pos = floorPositions[gl_VertexIndex - 36];
+
+        fragColor = vec3(1.0, 1.0, 1.0);
+    }
+
+    gl_Position = vec4(pos, 1.0);
 }
