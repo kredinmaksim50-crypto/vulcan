@@ -12,6 +12,14 @@
 #include "../Vulkan/CommandBuffers.h"
 #include "../Vulkan/SyncObjects.h"
 #include "../Vulkan/DepthBuffer.h"
+#include "../MVP/p/Perspective.h"
+#include "../Vulkan/UniformBufferObject.h"
+#include "../MVP/math/mathfff.cpp"
+#include "../Vulkan/Descriptions.h"
+#include "../Vulkan/image.h"
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 class Application
 {
@@ -20,6 +28,10 @@ public:
     void DrawFrame();
 
 private:
+
+    int currentFrame = 0;
+    const int MAX_FRAMES_IN_FLIGHT = 2;
+
     float angleX = 0.0f;
     float angleY = 0.0f;
 
@@ -37,6 +49,11 @@ private:
     Framebuffer framebuffer;
     CommandPool commandPool;
     CommandBuffers commandBuffers;
+
     SyncObjects syncObjects;
+
     DepthBuffer depthBuffer;
+    UniformBufferObjects uniformBufferObjects;
+    images img;
+
 };

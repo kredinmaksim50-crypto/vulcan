@@ -148,12 +148,16 @@
     <ClCompile Include="src\Application\Application.cpp" />
     <ClCompile Include="src\Application\Window\Window.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\MVP\math\mathfff.cpp" />
+    <ClCompile Include="src\MVP\p\Perspective.cpp" />
+    <ClCompile Include="src\MVP\p\Perspective.h" />
     <ClCompile Include="src\Vulkan\CommandBuffers.cpp" />
     <ClCompile Include="src\Vulkan\CommandPool.cpp" />
     <ClCompile Include="src\Vulkan\DepthBuffer.cpp" />
     <ClCompile Include="src\Vulkan\DeviceManager.cpp" />
     <ClCompile Include="src\Vulkan\Framebuffer.cpp" />
     <ClCompile Include="src\Vulkan\GraphicsPipeline.cpp" />
+    <ClCompile Include="src\Vulkan\image.cpp" />
     <ClCompile Include="src\Vulkan\ImageViews.cpp" />
     <ClCompile Include="src\Vulkan\PipelineLayout.cpp" />
     <ClCompile Include="src\Vulkan\RenderPass.cpp" />
@@ -167,14 +171,18 @@
     <ClInclude Include="src\Vulkan\DepthBuffer.h" />
     <ClInclude Include="src\Vulkan\CommandBuffers.h" />
     <ClInclude Include="src\Vulkan\CommandPool.h" />
+    <ClInclude Include="src\Vulkan\Descriptions.h" />
     <ClInclude Include="src\Vulkan\DeviceManager.h" />
     <ClInclude Include="src\Vulkan\Framebuffer.h" />
     <ClInclude Include="src\Vulkan\GraphicsPipeline.h" />
+    <ClInclude Include="src\Vulkan\image.h" />
     <ClInclude Include="src\Vulkan\ImageViews.h" />
     <ClInclude Include="src\Vulkan\PipelineLayout.h" />
     <ClInclude Include="src\Vulkan\RenderPass.h" />
+    <ClInclude Include="src\Vulkan\stb_image.h" />
     <ClInclude Include="src\Vulkan\Swapchain.h" />
     <ClInclude Include="src\Vulkan\SyncObjects.h" />
+    <ClInclude Include="src\Vulkan\UniformBufferObject.h" />
     <ClInclude Include="src\Vulkan\VulkanContext.h" />
     <ClInclude Include="src\Vulkan\VulkanObjects.h" />
   </ItemGroup>
