@@ -31,13 +31,29 @@ struct VulkanObjects
     std::vector<VkFramebuffer> swapChainFramebuffers;
     VkCommandPool commandPool = VK_NULL_HANDLE;
     std::vector<VkCommandBuffer> commandBuffers;
-    
-    VkSemaphore imageAvailableSemaphore = VK_NULL_HANDLE;
-    VkSemaphore renderFinishedSemaphore = VK_NULL_HANDLE;
-    VkFence inFlightFence = VK_NULL_HANDLE;
+
+    std::vector<VkSemaphore> imageAvailableSemaphore;
+    std::vector<VkSemaphore> renderFinishedSemaphore;
+    std::vector<VkFence> inFlightFence;
 
     VkImage depthImage = VK_NULL_HANDLE;
     VkDeviceMemory depthImageMemory = VK_NULL_HANDLE;
     VkImageView depthImageView = VK_NULL_HANDLE;
     VkFormat depthFormat = VK_FORMAT_D32_SFLOAT;
+
+    VkBuffer uniformBuffer;
+    VkDeviceMemory uniformBufferMemory;
+    void* uniformBufferMapped;
+
+    VkDescriptorSetLayout descriptorSetLayout;
+    VkDescriptorPool descriptorPool;
+    VkDescriptorSet descriptorSet; // Сюда запишется итоговый указатель
+
+    VkBuffer Buffer;
+    VkImage Image;
+    VkDeviceMemory DeviceMemory;
+
+    VkImageView textureImageView = VK_NULL_HANDLE;
+    VkSampler textureSampler = VK_NULL_HANDLE;
+
 };

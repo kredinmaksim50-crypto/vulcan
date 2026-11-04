@@ -8,6 +8,8 @@ void Window::Create()
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
     window = glfwCreateWindow(800, 800, "Vulkan", nullptr, nullptr);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
 }
 
 void Window::Destroy()

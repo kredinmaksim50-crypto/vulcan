@@ -19,8 +19,8 @@ void PipelineLayout::Create(VulkanObjects& objects)
     VkPipelineLayoutCreateInfo createInfo{};
     createInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
 
-    createInfo.setLayoutCount = 0;
-    createInfo.pSetLayouts = nullptr;
+    createInfo.setLayoutCount = 1;
+    createInfo.pSetLayouts = &objects.descriptorSetLayout;
 
     createInfo.pushConstantRangeCount = 2;
     createInfo.pPushConstantRanges = ranges;

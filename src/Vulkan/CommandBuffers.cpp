@@ -91,6 +91,15 @@ void CommandBuffers::Record(
         VK_PIPELINE_BIND_POINT_GRAPHICS,
         objects.graphicsPipeline);
 
+    vkCmdBindDescriptorSets(
+        commandBuffer,                  // Ваш текущий Command Buffer кадра
+        VK_PIPELINE_BIND_POINT_GRAPHICS,
+        objects.pipelineLayout,    // Ваш Pipeline Layout
+        0, 1,
+        &objects.descriptorSet,   // Переменная вашего дескриптора
+        0, nullptr
+    );
+
     vkCmdPushConstants(
         commandBuffer,
         objects.pipelineLayout,
@@ -106,6 +115,11 @@ void CommandBuffers::Record(
         2 * sizeof(float),
         sizeof(float),
         &pc.alphass);
+
+    // Привязываем наш Descriptor Set (который указывает на Uniform-буфер с матрицами)
+    
+
+
 
     vkCmdDraw(commandBuffer, 42, 1, 0, 0);
 
